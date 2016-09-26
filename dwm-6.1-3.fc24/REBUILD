@@ -1,2 +1,0 @@
-# Run this to rebuild this RPM package
-rpmbuild --nosignature --rebuild /home/sasheto/data/src/src-rpms/dwm-6.1-3.fc24.src.rpm

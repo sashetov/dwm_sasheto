@@ -1,2 +1,0 @@
-# Run this script to install this RPM package
-rpm --nosignature -ivh /home/sasheto/data/src/src-rpms/dwm-6.1-3.fc24.src.rpm

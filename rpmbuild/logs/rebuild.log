@@ -1,0 +1,160 @@
+Installing SRPMS/dwm-6.1-3.fc24.src.rpm
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.Z8JEBC
++ umask 022
++ cd /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILD
++ cd /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILD
++ rm -rf dwm-6.1
++ /usr/bin/tar -xof -
++ /usr/bin/gzip -dc /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/SOURCES/dwm-6.1.tar.gz
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd dwm-6.1
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ /usr/bin/patch -s
++ /usr/bin/cat /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/SOURCES/dwm-5.8.2-user-notes.patch
++ sed -i -e 's|\t@|\t|' Makefile
++ sed -i -e 's|-Os|-O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -m64 -mtune=generic|' config.mk
++ sed -i -e 's|-s ${LIBS}|-Wl,-z,relro -specs=/usr/lib/rpm/redhat/redhat-hardened-ld ${LIBS}|' config.mk
++ sed -i -e 's|X11INC = .*|X11INC = /usr/include|' config.mk
++ sed -i -e 's|X11LIB = .*|X11LIB = /usr/lib64|' config.mk
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.4fhguV
++ umask 022
++ cd /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILD
++ cd dwm-6.1
++ make -j2
+echo dwm build options:
+echo creating config.h from config.def.h
+creating config.h from config.def.h
+cp config.def.h config.h
+dwm build options:
+echo "CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -m64 -mtune=generic -I/usr/include -I/usr/include/freetype2 -D_BSD_SOURCE -D_POSIX_C_SOURCE=2 -DVERSION=\"6.1\" -DXINERAMA"
+echo CC drw.c
+CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -m64 -mtune=generic -I/usr/include -I/usr/include/freetype2 -D_BSD_SOURCE -D_POSIX_C_SOURCE=2 -DVERSION="6.1" -DXINERAMA
+echo "LDFLAGS  = -Wl,-z,relro -specs=/usr/lib/rpm/redhat/redhat-hardened-ld -L/usr/lib64 -lX11 -lXinerama -lfontconfig -lXft"
+CC drw.c
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -m64 -mtune=generic -I/usr/include -I/usr/include/freetype2 -D_BSD_SOURCE -D_POSIX_C_SOURCE=2 -DVERSION=\"6.1\" -DXINERAMA drw.c
+LDFLAGS  = -Wl,-z,relro -specs=/usr/lib/rpm/redhat/redhat-hardened-ld -L/usr/lib64 -lX11 -lXinerama -lfontconfig -lXft
+echo "CC       = cc"
+CC       = cc
+echo CC dwm.c
+CC dwm.c
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -m64 -mtune=generic -I/usr/include -I/usr/include/freetype2 -D_BSD_SOURCE -D_POSIX_C_SOURCE=2 -DVERSION=\"6.1\" -DXINERAMA dwm.c
+In file included from /usr/include/stdio.h:27:0,
+                 from drw.c:2:
+/usr/include/features.h:148:3: warning: #warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE" [-Wcpp]
+ # warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE"
+   ^~~~~~~
+In file included from /usr/include/errno.h:28:0,
+                 from dwm.c:23:
+/usr/include/features.h:148:3: warning: #warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE" [-Wcpp]
+ # warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE"
+   ^~~~~~~
+echo CC util.c
+CC util.c
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -m64 -mtune=generic -I/usr/include -I/usr/include/freetype2 -D_BSD_SOURCE -D_POSIX_C_SOURCE=2 -DVERSION=\"6.1\" -DXINERAMA util.c
+In file included from /usr/include/stdio.h:27:0,
+                 from util.c:3:
+/usr/include/features.h:148:3: warning: #warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE" [-Wcpp]
+ # warning "_BSD_SOURCE and _SVID_SOURCE are deprecated, use _DEFAULT_SOURCE"
+   ^~~~~~~
+echo CC -o dwm
+CC -o dwm
+cc -o dwm drw.o dwm.o util.o -Wl,-z,relro -specs=/usr/lib/rpm/redhat/redhat-hardened-ld -L/usr/lib64 -lX11 -lXinerama -lfontconfig -lXft
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.34oAQp
++ umask 022
++ cd /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILD
++ '[' /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64 '!=' / ']'
++ rm -rf /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64
+++ dirname /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64
++ mkdir -p /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT
++ mkdir /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64
++ cd dwm-6.1
++ /usr/bin/make install DESTDIR=/home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64 PREFIX=/usr
+echo dwm build options:
+dwm build options:
+echo "CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -m64 -mtune=generic -I/usr/include -I/usr/include/freetype2 -D_BSD_SOURCE -D_POSIX_C_SOURCE=2 -DVERSION=\"6.1\" -DXINERAMA"
+CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -O2 -g -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -m64 -mtune=generic -I/usr/include -I/usr/include/freetype2 -D_BSD_SOURCE -D_POSIX_C_SOURCE=2 -DVERSION="6.1" -DXINERAMA
+echo "LDFLAGS  = -Wl,-z,relro -specs=/usr/lib/rpm/redhat/redhat-hardened-ld -L/usr/lib64 -lX11 -lXinerama -lfontconfig -lXft"
+LDFLAGS  = -Wl,-z,relro -specs=/usr/lib/rpm/redhat/redhat-hardened-ld -L/usr/lib64 -lX11 -lXinerama -lfontconfig -lXft
+echo "CC       = cc"
+CC       = cc
+echo installing executable file to /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/bin
+installing executable file to /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/bin
+mkdir -p /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/bin
+cp -f dwm /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/bin
+chmod 755 /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/bin/dwm
+echo installing manual page to /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/share/man/man1
+installing manual page to /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/share/man/man1
+mkdir -p /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/share/man/man1
+sed "s/VERSION/6.1/g" < dwm.1 > /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/share/man/man1/dwm.1
+chmod 644 /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/share/man/man1/dwm.1
++ install -m755 /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/SOURCES/dwm-start /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/bin/dwm-start
++ sed -i s/version=VERSION/version=6.1/ /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/bin/dwm-start
++ sed -i s/release=RELEASE/release=3.fc24/ /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/bin/dwm-start
++ install -m644 /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/SOURCES/dwm-start.1 /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/share/man/man1/dwm-start.1
++ sed -i s/VERSION/6.1/ /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/share/man/man1/dwm-start.1
++ sed -i s/RELEASE/3.fc24/ /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/share/man/man1/dwm-start.1
++ mkdir -p /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/src/dwm-user-6.1-3.fc24
++ install -m644 -p -t /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/src/dwm-user-6.1-3.fc24 config.def.h config.mk drw.c drw.h dwm.1 dwm.c dwm.png Makefile transient.c util.c util.h
++ mkdir -p /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/share/xsessions
++ install -m644 /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/SOURCES/dwm.desktop /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/share/xsessions/dwm.desktop
++ install -m644 /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/SOURCES/dwm-user.desktop /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/share/xsessions/dwm-user.desktop
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id -m --run-dwz --dwz-low-mem-die-limit 10000000 --dwz-max-die-limit 110000000 /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILD/dwm-6.1
+extracting debug info from /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/bin/dwm
+dwz: Too few files for multifile optimization
+/usr/lib/rpm/sepdebugcrcfix: Updated 1 CRC32s, 0 CRC32s did match.
+138 blocks
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/brp-compress
++ /usr/lib/rpm/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/brp-python-bytecompile /usr/bin/python 1
++ /usr/lib/rpm/brp-python-hardlink
++ /usr/lib/rpm/redhat/brp-java-repack-jars
+Processing files: dwm-6.1-3.fc24.x86_64
+Executing(%doc): /bin/sh -e /var/tmp/rpm-tmp.WQHWV0
++ umask 022
++ cd /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILD
++ cd dwm-6.1
++ DOCDIR=/home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/share/doc/dwm
++ export DOCDIR
++ /usr/bin/mkdir -p /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/share/doc/dwm
++ cp -pr BUGS /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/share/doc/dwm
++ cp -pr README /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/share/doc/dwm
++ cp -pr TODO /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/share/doc/dwm
++ exit 0
+Executing(%license): /bin/sh -e /var/tmp/rpm-tmp.zo4EvC
++ umask 022
++ cd /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILD
++ cd dwm-6.1
++ LICENSEDIR=/home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/share/licenses/dwm
++ export LICENSEDIR
++ /usr/bin/mkdir -p /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/share/licenses/dwm
++ cp -pr LICENSE /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64/usr/share/licenses/dwm
++ exit 0
+Provides: dwm = 6.1-3.fc24 dwm(x86-64) = 6.1-3.fc24
+Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+Requires: libX11.so.6()(64bit) libXft.so.2()(64bit) libXinerama.so.1()(64bit) libc.so.6()(64bit) libc.so.6(GLIBC_2.2.5)(64bit) libc.so.6(GLIBC_2.3.4)(64bit) libc.so.6(GLIBC_2.4)(64bit) libfontconfig.so.1()(64bit) rtld(GNU_HASH)
+Processing files: dwm-user-6.1-3.fc24.x86_64
+Provides: dwm-user = 6.1-3.fc24 dwm-user(x86-64) = 6.1-3.fc24
+Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+Requires: /bin/sh
+Processing files: dwm-debuginfo-6.1-3.fc24.x86_64
+Provides: dwm-debuginfo = 6.1-3.fc24 dwm-debuginfo(x86-64) = 6.1-3.fc24
+Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64
+Wrote: /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/RPMS/x86_64/dwm-6.1-3.fc24.x86_64.rpm
+Wrote: /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/RPMS/x86_64/dwm-user-6.1-3.fc24.x86_64.rpm
+Wrote: /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/RPMS/x86_64/dwm-debuginfo-6.1-3.fc24.x86_64.rpm
+Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.KdOJ1f
++ umask 022
++ cd /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILD
++ cd dwm-6.1
++ /usr/bin/rm -rf /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILDROOT/dwm-6.1-3.fc24.x86_64
++ exit 0
+Executing(--clean): /bin/sh -e /var/tmp/rpm-tmp.npmPGT
++ umask 022
++ cd /home/sasheto/data/src/git-repos/dwm-user-6.1-3.fc24/rpmbuild/BUILD
++ rm -rf dwm-6.1
++ exit 0
