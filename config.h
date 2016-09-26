@@ -1,3 +1,5 @@
+/* See LICENSE file for copyright and license details. */
+
 /* appearance */
 static const char *fonts[] = {
   "monospace:size=10"
@@ -10,7 +12,7 @@ static const char selbordercolor[]  = "#005577";
 static const char selbgcolor[]      = "#005577";
 static const char selfgcolor[]      = "#eeeeee";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int snap      = 16;       /* snap pixel */
+static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
@@ -23,8 +25,8 @@ static const Rule rules[] = {
    *  WM_NAME(STRING) = title
    */
   /* class      instance    title       tags mask     isfloating   monitor */
-//{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-//{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+  { "Gimp",     NULL,       NULL,       0,            1,           -1 },
+  { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
@@ -40,14 +42,12 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-//modmap | grep Super
-#define MODKEY Mod4Mask
+#define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
   { MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
   { MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
   { MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
   { MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
-
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
