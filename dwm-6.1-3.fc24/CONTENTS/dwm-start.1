@@ -1,0 +1,45 @@
+.TH DWM\-START 1 dwm\-start\-VERSION\-RELEASE
+.SH NAME
+dwm\-start \- dwm reconfiguration helper script
+.SH SYNOPSIS
+.B dwm\-start
+.SH DESCRIPTION
+dwm\-start is a helper script for running and reconfiguring
+.BR dwm
+if neccessarry. It's the preferred way of starting
+.BR dwm
+in Fedora.
+.P
+Running
+.BR dwm-start
+starts the Fedora build by default.  If you wish to customize your
+configuration, put the dwm config header file to $HOME/.dwm/config.h and
+adjust it according to your needs.  The official Fedora configuration file
+might be a useful template.
+See the
+.BR FILES
+section of this manual.
+.P
+Every time the user configuration file has changed or new patches have been
+added,
+.BR dwm\-start
+will rebuild the user dwm binary prior to its execution.
+.SH FILES
+.nf
+$HOME/.dwm
+    - User dwm directory
+$HOME/.dwm/config.h
+    - User dwm configuration
+$HOME/.dwm/patches
+    - Optional patches to apply
+/usr/src/dwm\-user\-VERSION\-RELEASE
+    - dwm sources
+/usr/src/dwm\-VERSION\-RELEASE/config.def.h
+    - Fedora build configuration
+.fi
+.SH SEE ALSO
+.BR dwm (1)
+.SH BUGS
+Report bugs to Red Hat Bugzilla, http://bugzilla.redhat.com/
+.SH AUTHOR
+Written by Petr Šabata <contyk@redhat.com>, 2010\-2014.

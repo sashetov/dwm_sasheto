@@ -1,0 +1,21 @@
+Name        : dwm
+Version     : 6.1
+Release     : 3.fc24
+Architecture: armv7hl
+Install Date: (not installed)
+Group       : User Interface/Desktops
+Size        : 39066
+License     : MIT
+Signature   : RSA/SHA256, Fri Aug 12 17:15:27 2016, Key ID 73bde98381b46521
+Source RPM  : (none)
+Build Date  : Fri Aug 12 12:08:10 2016
+Build Host  : arm02-builder22.arm.fedoraproject.org
+Relocations : (not relocatable)
+Packager    : Fedora Project
+Vendor      : Fedora Project
+URL         : http://dwm.suckless.org/
+Summary     : Dynamic window manager for X
+Description :
+dwm is a dynamic window manager for X. It manages windows in tiled, monocle and
+floating layouts. All of the layouts can be applied dynamically, optimizing
+the environment for the application in use and the task performed.
