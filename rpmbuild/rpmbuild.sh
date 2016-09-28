@@ -21,4 +21,6 @@ cp -a ../dwm_sasheto.spec SPECS/dwm.spec &&
 #build the patched binary rpms
 rpmbuild -ba SPECS/dwm.spec > ../logs/rebuild-patched-binaries.log 2>&1
 #install these with force replace for the files with the new ones
-sudo rpm -i --force ./RPMS/x86_64/*.rpm
+for rpm in ./RPMS/x86_64/*.rpm; do 
+  sudo rpm --force -ivh $rpm;
+done;
