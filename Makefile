@@ -8,7 +8,7 @@ OBJ = ${SRC:.c=.o}
 
 all: options dwm
 
-options:
+ptions:
 	echo dwm build options:
 	echo "CFLAGS   = ${CFLAGS}"
 	echo "LDFLAGS  = ${LDFLAGS}"
@@ -56,5 +56,8 @@ uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm
 	echo removing manual page from ${DESTDIR}${MANPREFIX}/man1
 	rm -f ${DESTDIR}${MANPREFIX}/man1/dwm.1
+
+rpm_dist:
+	./rpmbuild.sh
 
 .PHONY: all options clean dist install uninstall

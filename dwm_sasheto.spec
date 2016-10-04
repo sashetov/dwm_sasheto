@@ -15,7 +15,7 @@ Source3:        dwm.desktop
 Source4:        dwm-user.desktop
 # Fedora notes referring to dwm-user in dwm(1)
 Patch1:         dwm-5.8.2-user-notes.patch
-Patch2:         modkey4-and-nofloating.patch
+Patch2:         dmw_sasheto.patch
 BuildRequires:  binutils
 BuildRequires:  coreutils
 BuildRequires:  fontconfig-devel
