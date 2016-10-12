@@ -60,4 +60,7 @@ uninstall:
 rpm_dist:
 	./rpmbuild.sh
 
+rpm_dist_clean:
+	./rpmbuild_clean.sh
+
 .PHONY: all options clean dist install uninstall

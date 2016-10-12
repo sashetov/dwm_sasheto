@@ -1,0 +1,5 @@
+#!/bin/bash
+source rpmbuild.inc.sh \
+  && make rpm_dist_clean \
+  && sudo make rpm_dist \
+  && sudo chown -Rf sasheto:sasheto $RPMBUILD_DIR $LOGS_DIR $DIFF_WORKDIR
