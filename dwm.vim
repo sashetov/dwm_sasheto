@@ -63,7 +63,7 @@ argglobal
 silent! argdel *
 argadd Makefile
 set stal=2
-edit Makefile
+edit config.def.h
 set splitbelow splitright
 wincmd _ | wincmd |
 split
@@ -74,10 +74,144 @@ wincmd w
 wincmd w
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 24 + 38) / 76)
-exe '2resize ' . ((&lines * 24 + 38) / 76)
-exe '3resize ' . ((&lines * 23 + 38) / 76)
+exe '1resize ' . ((&lines * 68 + 37) / 75)
+exe '2resize ' . ((&lines * 1 + 37) / 75)
+exe '3resize ' . ((&lines * 1 + 37) / 75)
 argglobal
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal backupcopy=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal cindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+set colorcolumn=80
+setlocal colorcolumn=80
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'cpp'
+setlocal filetype=cpp
+endif
+setlocal fixendofline
+set foldcolumn=5
+setlocal foldcolumn=5
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+set foldlevel=99
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+set foldmethod=syntax
+setlocal foldmethod=syntax
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+set list
+setlocal list
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=ccomplete#Complete
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'cpp'
+setlocal syntax=cpp
+endif
+setlocal tabstop=2
+setlocal tagcase=
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal nowinfixheight
+setlocal nowinfixwidth
+set nowrap
+setlocal nowrap
+setlocal wrapmargin=0
+4
+normal! zo
+21
+normal! zo
+22
+normal! zo
+35
+normal! zo
+58
+normal! zo
+97
+normal! zo
+let s:l = 80 - ((0 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+80
+normal! 03|
+wincmd w
+argglobal
+edit Makefile
 vnoremap <buffer>  :call RangeJsBeautify()
 setlocal keymap=
 setlocal noarabic
@@ -192,11 +326,11 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 23 - ((0 * winheight(0) + 12) / 24)
+let s:l = 2 - ((1 * winheight(0) + 0) / 1)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-23
+2
 normal! 0
 wincmd w
 argglobal
@@ -314,138 +448,16 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 5 - ((0 * winheight(0) + 12) / 24)
+let s:l = 5 - ((0 * winheight(0) + 0) / 1)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 5
 normal! 0
 wincmd w
-argglobal
-edit config.def.h
-setlocal keymap=
-setlocal noarabic
-setlocal noautoindent
-setlocal backupcopy=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal cindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-set colorcolumn=80
-setlocal colorcolumn=80
-setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
-setlocal commentstring=/*%s*/
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'cpp'
-setlocal filetype=cpp
-endif
-setlocal fixendofline
-set foldcolumn=5
-setlocal foldcolumn=5
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-set foldlevel=99
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-set foldmethod=syntax
-setlocal foldmethod=syntax
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=croql
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=
-setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=
-set list
-setlocal list
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=ccomplete#Complete
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=2
-setlocal noshortname
-setlocal nosmartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal swapfile
-setlocal synmaxcol=3000
-if &syntax != 'cpp'
-setlocal syntax=cpp
-endif
-setlocal tabstop=2
-setlocal tagcase=
-setlocal tags=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal nowinfixheight
-setlocal nowinfixwidth
-set nowrap
-setlocal nowrap
-setlocal wrapmargin=0
-let s:l = 2 - ((0 * winheight(0) + 11) / 23)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-2
-normal! 0
-wincmd w
-exe '1resize ' . ((&lines * 24 + 38) / 76)
-exe '2resize ' . ((&lines * 24 + 38) / 76)
-exe '3resize ' . ((&lines * 23 + 38) / 76)
+exe '1resize ' . ((&lines * 68 + 37) / 75)
+exe '2resize ' . ((&lines * 1 + 37) / 75)
+exe '3resize ' . ((&lines * 1 + 37) / 75)
 tabedit makerpm
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -463,11 +475,11 @@ wincmd w
 wincmd w
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 1 + 38) / 76)
-exe '2resize ' . ((&lines * 1 + 38) / 76)
-exe '3resize ' . ((&lines * 1 + 38) / 76)
-exe '4resize ' . ((&lines * 1 + 38) / 76)
-exe '5resize ' . ((&lines * 65 + 38) / 76)
+exe '1resize ' . ((&lines * 1 + 37) / 75)
+exe '2resize ' . ((&lines * 64 + 37) / 75)
+exe '3resize ' . ((&lines * 1 + 37) / 75)
+exe '4resize ' . ((&lines * 1 + 37) / 75)
+exe '5resize ' . ((&lines * 1 + 37) / 75)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -582,7 +594,7 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 2 - ((1 * winheight(0) + 0) / 1)
+let s:l = 2 - ((0 * winheight(0) + 0) / 1)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -704,7 +716,7 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 14 - ((13 * winheight(0) + 0) / 1)
+let s:l = 14 - ((0 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1070,19 +1082,18 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 4 - ((3 * winheight(0) + 32) / 65)
+let s:l = 4 - ((3 * winheight(0) + 0) / 1)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 4
 normal! 03|
 wincmd w
-5wincmd w
-exe '1resize ' . ((&lines * 1 + 38) / 76)
-exe '2resize ' . ((&lines * 1 + 38) / 76)
-exe '3resize ' . ((&lines * 1 + 38) / 76)
-exe '4resize ' . ((&lines * 1 + 38) / 76)
-exe '5resize ' . ((&lines * 65 + 38) / 76)
+exe '1resize ' . ((&lines * 1 + 37) / 75)
+exe '2resize ' . ((&lines * 64 + 37) / 75)
+exe '3resize ' . ((&lines * 1 + 37) / 75)
+exe '4resize ' . ((&lines * 1 + 37) / 75)
+exe '5resize ' . ((&lines * 1 + 37) / 75)
 tabedit dwm.c
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -1100,11 +1111,11 @@ wincmd w
 wincmd w
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 65 + 38) / 76)
-exe '2resize ' . ((&lines * 1 + 38) / 76)
-exe '3resize ' . ((&lines * 1 + 38) / 76)
-exe '4resize ' . ((&lines * 1 + 38) / 76)
-exe '5resize ' . ((&lines * 1 + 38) / 76)
+exe '1resize ' . ((&lines * 64 + 37) / 75)
+exe '2resize ' . ((&lines * 1 + 37) / 75)
+exe '3resize ' . ((&lines * 1 + 37) / 75)
+exe '4resize ' . ((&lines * 1 + 37) / 75)
+exe '5resize ' . ((&lines * 1 + 37) / 75)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -1220,7 +1231,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 2141 - ((32 * winheight(0) + 32) / 65)
+let s:l = 2141 - ((32 * winheight(0) + 32) / 64)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1719,12 +1730,12 @@ normal! zt
 1
 normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 65 + 38) / 76)
-exe '2resize ' . ((&lines * 1 + 38) / 76)
-exe '3resize ' . ((&lines * 1 + 38) / 76)
-exe '4resize ' . ((&lines * 1 + 38) / 76)
-exe '5resize ' . ((&lines * 1 + 38) / 76)
-tabnext 2
+exe '1resize ' . ((&lines * 64 + 37) / 75)
+exe '2resize ' . ((&lines * 1 + 37) / 75)
+exe '3resize ' . ((&lines * 1 + 37) / 75)
+exe '4resize ' . ((&lines * 1 + 37) / 75)
+exe '5resize ' . ((&lines * 1 + 37) / 75)
+tabnext 1
 set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

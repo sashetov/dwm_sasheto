@@ -11,13 +11,13 @@ static const char normfgcolor[]     = "#bbbbbb";
 static const char selbordercolor[]  = "#ff0000";//"#005577";
 static const char selbgcolor[]      = "#005577";
 static const char selfgcolor[]      = "#eeeeee";
-static const unsigned int borderpx  = 5;  /* border pixel of windows */
+static const unsigned int borderpx  = 1;  /* border pixel of windows */
 static const unsigned int snap      = 32; /* snap pixel */
 static const int showbar            = 1;  /* 0 means no bar */
 static const int topbar             = 1;  /* 0 means bottom bar */
 
 /* tagging */
-static const char *tags[] = { "69net", "prgn", "www0", "www1", "mail", "cal", "social", "media", "misc" };
+static const char *tags[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
 static const Rule rules[] = {
    /* xprop(1):
     *	WM_CLASS(STRING) = instance, class
