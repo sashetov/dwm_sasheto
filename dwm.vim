@@ -44,7 +44,7 @@ endif
 set shortmess=aoO
 badd +23 Makefile
 badd +1 config.mk
-badd +2141 dwm.c
+badd +1 dwm.c
 badd +1 dwm.h
 badd +1 transient.c
 badd +1 util.c
@@ -58,7 +58,7 @@ badd +28 rpmbuild.man
 badd +2 rpmbuild_clean.sh
 badd +5 rpmbuild.inc
 badd +1 rpmbuild.inc.sh
-badd +2 makerpm
+badd +1 makerpm
 argglobal
 silent! argdel *
 argadd Makefile
@@ -74,9 +74,9 @@ wincmd w
 wincmd w
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 68 + 37) / 75)
-exe '2resize ' . ((&lines * 1 + 37) / 75)
-exe '3resize ' . ((&lines * 1 + 37) / 75)
+exe '1resize ' . ((&lines * 69 + 38) / 76)
+exe '2resize ' . ((&lines * 1 + 38) / 76)
+exe '3resize ' . ((&lines * 1 + 38) / 76)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -203,12 +203,12 @@ normal! zo
 normal! zo
 97
 normal! zo
-let s:l = 80 - ((0 * winheight(0) + 34) / 68)
+let s:l = 25 - ((24 * winheight(0) + 34) / 69)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-80
-normal! 03|
+25
+normal! 05|
 wincmd w
 argglobal
 edit Makefile
@@ -326,7 +326,7 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 2 - ((1 * winheight(0) + 0) / 1)
+let s:l = 2 - ((0 * winheight(0) + 0) / 1)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -455,9 +455,9 @@ normal! zt
 5
 normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 68 + 37) / 75)
-exe '2resize ' . ((&lines * 1 + 37) / 75)
-exe '3resize ' . ((&lines * 1 + 37) / 75)
+exe '1resize ' . ((&lines * 69 + 38) / 76)
+exe '2resize ' . ((&lines * 1 + 38) / 76)
+exe '3resize ' . ((&lines * 1 + 38) / 76)
 tabedit makerpm
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -475,11 +475,11 @@ wincmd w
 wincmd w
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 1 + 37) / 75)
-exe '2resize ' . ((&lines * 64 + 37) / 75)
-exe '3resize ' . ((&lines * 1 + 37) / 75)
-exe '4resize ' . ((&lines * 1 + 37) / 75)
-exe '5resize ' . ((&lines * 1 + 37) / 75)
+exe '1resize ' . ((&lines * 1 + 38) / 76)
+exe '2resize ' . ((&lines * 65 + 38) / 76)
+exe '3resize ' . ((&lines * 1 + 38) / 76)
+exe '4resize ' . ((&lines * 1 + 38) / 76)
+exe '5resize ' . ((&lines * 1 + 38) / 76)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -716,7 +716,7 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 14 - ((0 * winheight(0) + 32) / 64)
+let s:l = 14 - ((0 * winheight(0) + 32) / 65)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1082,18 +1082,18 @@ setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 4 - ((3 * winheight(0) + 0) / 1)
+let s:l = 4 - ((0 * winheight(0) + 0) / 1)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 4
 normal! 03|
 wincmd w
-exe '1resize ' . ((&lines * 1 + 37) / 75)
-exe '2resize ' . ((&lines * 64 + 37) / 75)
-exe '3resize ' . ((&lines * 1 + 37) / 75)
-exe '4resize ' . ((&lines * 1 + 37) / 75)
-exe '5resize ' . ((&lines * 1 + 37) / 75)
+exe '1resize ' . ((&lines * 1 + 38) / 76)
+exe '2resize ' . ((&lines * 65 + 38) / 76)
+exe '3resize ' . ((&lines * 1 + 38) / 76)
+exe '4resize ' . ((&lines * 1 + 38) / 76)
+exe '5resize ' . ((&lines * 1 + 38) / 76)
 tabedit dwm.c
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -1111,11 +1111,11 @@ wincmd w
 wincmd w
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 64 + 37) / 75)
-exe '2resize ' . ((&lines * 1 + 37) / 75)
-exe '3resize ' . ((&lines * 1 + 37) / 75)
-exe '4resize ' . ((&lines * 1 + 37) / 75)
-exe '5resize ' . ((&lines * 1 + 37) / 75)
+exe '1resize ' . ((&lines * 65 + 38) / 76)
+exe '2resize ' . ((&lines * 1 + 38) / 76)
+exe '3resize ' . ((&lines * 1 + 38) / 76)
+exe '4resize ' . ((&lines * 1 + 38) / 76)
+exe '5resize ' . ((&lines * 1 + 38) / 76)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -1231,7 +1231,7 @@ set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 2141 - ((32 * winheight(0) + 32) / 64)
+let s:l = 2141 - ((33 * winheight(0) + 32) / 65)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1730,11 +1730,11 @@ normal! zt
 1
 normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 64 + 37) / 75)
-exe '2resize ' . ((&lines * 1 + 37) / 75)
-exe '3resize ' . ((&lines * 1 + 37) / 75)
-exe '4resize ' . ((&lines * 1 + 37) / 75)
-exe '5resize ' . ((&lines * 1 + 37) / 75)
+exe '1resize ' . ((&lines * 65 + 38) / 76)
+exe '2resize ' . ((&lines * 1 + 38) / 76)
+exe '3resize ' . ((&lines * 1 + 38) / 76)
+exe '4resize ' . ((&lines * 1 + 38) / 76)
+exe '5resize ' . ((&lines * 1 + 38) / 76)
 tabnext 1
 set stal=1
 if exists('s:wipebuf')
