@@ -30,6 +30,7 @@ function make_patch {
     && mkdir a/ && mv "$SRC_TARGZ/" a/ \
     && mkdir b/ && cp -ar a/$SRC_TARGZ/ b/ \
     && cp -a "$SRC_DIR/config.def.h" "b/$SRC_TARGZ/" \
+    && cp -a "$SRC_DIR/dwm.c" "b/$SRC_TARGZ/" \
     && diff -uNr "a/${SRC_TARGZ}" \
       "b/${SRC_TARGZ}" > $DIFF_WORKDIR/$PATCH_NAME.patch
     # for some reason diff doesn't return a good exit status for a successful
