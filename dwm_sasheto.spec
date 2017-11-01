@@ -1,6 +1,6 @@
 Name:           dwm
 Version:        6.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Dynamic window manager for X
 %global         _dwmsourcedir       %{_usrsrc}/dwm-user-%{version}-%{release}
 Group:          User Interface/Desktops
