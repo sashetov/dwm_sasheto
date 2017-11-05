@@ -13,7 +13,6 @@ function prep_logs {
     && mkdir -p "${RPMBUILD_DIR}"/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
   set +x
 }
-
 function prep_rpmbuild {
   set -x
   echo "%_topdir $RPMBUILD_DIR/" > "${RPMBUILD_DIR}/.rpmmacros" \
@@ -21,14 +20,12 @@ function prep_rpmbuild {
     && ln -s "${RPMBUILD_DIR}/.rpmmacros" "${HOME}/.rpmmacros"
   set +x
 }
-
 function prep_from_srpm {
   set -x
   cp "${SRC_DIR}/srpm/${SRPM_NAME}" "${RPMBUILD_DIR}/SRPMS/" \
     && rpmbuild -rp "${RPMBUILD_DIR}/SRPMS/${SRPM_NAME}"
   set +x
 }
-
 function make_patch {
   set -x
   mkdir $DIFF_WORKDIR \
@@ -48,7 +45,6 @@ function make_patch {
     set +x
     return 0
 }
-
 function prep_build_from_spec {
   set -x
   cp -a "${DIFF_WORKDIR}/${PATCH_NAME}.patch" \
@@ -57,32 +53,27 @@ function prep_build_from_spec {
       "${RPMBUILD_DIR}/SPECS/${SPEC_NAME}.spec"
   set +x
 }
-
 function build_new_patched_rpms {
   set -x
   rpmbuild  -ba "${RPMBUILD_DIR}/SPECS/${SPEC_NAME}.spec" --nocheck
   set +x
 }
-
 function clean_rpmbuild {
   set -x
   rm -f "${HOME}/.rpmmacros" \
     && rm -rf "${RPMBUILD_DIR}"
   set +x
 }
-
 function clean_logs {
   set -x
   rm -rf "${LOGS_DIR}"
   set +x
 }
-
 function clean_patch {
   set -x
   rm -rf "${DIFF_WORKDIR}"
   set +x
 }
-
 function clean_all {
   set -x
   clean_rpmbuild
@@ -90,4 +81,3 @@ function clean_all {
   clean_logs
   set +x
 }
-
