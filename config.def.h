@@ -39,43 +39,45 @@ static char dmenumon[2] = "0";
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "xterm", NULL };
 static const char *scrot[] = { "scrot","-q","100","/data/pics/screenshots/\%s.jpg", NULL };
+static const char *nextkb[] = { "/home/sasheto/bin/utils/nextkb", NULL };
 static Key keys[] = {
-  { KeyPress,     MODKEY,             XK_p,      spawn,          {.v = dmenucmd } },
-  { KeyPress,     MODKEY|ShiftMask,   XK_Return, spawn,          {.v = termcmd } },
-  { KeyPress,     MODKEY,             XK_b,      togglebar,      {0} },
-  { KeyPress,     MODKEY,             XK_j,      focusstack,     {.i = +1 } },
-  { KeyPress,     MODKEY,             XK_k,      focusstack,     {.i = -1 } },
-  { KeyPress,     MODKEY,             XK_i,      incnmaster,     {.i = +1 } },
-  { KeyPress,     MODKEY,             XK_d,      incnmaster,     {.i = -1 } },
-  { KeyPress,     MODKEY,             XK_h,      setmfact,       {.f = -0.05} },
-  { KeyPress,     MODKEY,             XK_l,      setmfact,       {.f = +0.05} },
-  { KeyPress,     MODKEY,             XK_Return, zoom,           {0} },
-  { KeyPress,     MODKEY,             XK_Tab,    view,           {0} },
-  { KeyPress,     MODKEY|ShiftMask,   XK_c,      killclient,     {0} },
-  { KeyPress,     MODKEY,             XK_t,      setlayout,      {.v = &layouts[0]} },
-  { KeyPress,     MODKEY,             XK_f,      setlayout,      {.v = &layouts[1]} },
-  { KeyPress,     MODKEY,             XK_m,      setlayout,      {.v = &layouts[2]} },
-  { KeyPress,     MODKEY,             XK_g,      setlayout,      {.v = &layouts[3]} },
-  { KeyPress,     MODKEY,             XK_s,      setlayout,      {.v = &layouts[4]} },
-  { KeyPress,     MODKEY,             XK_space,  setlayout,      {0} },
-  { KeyPress,     MODKEY|ShiftMask,   XK_space,  togglefloating, {0} },
-  { KeyPress,     MODKEY,             XK_0,      view,           {.ui = ~0 } },
-  { KeyPress,     MODKEY|ShiftMask,   XK_0,      tag,            {.ui = ~0 } },
-  { KeyPress,     MODKEY,             XK_comma,  focusmon,       {.i = -1 } },
-  { KeyPress,     MODKEY,             XK_period, focusmon,       {.i = +1 } },
-  { KeyPress,     MODKEY|ShiftMask,   XK_comma,  tagmon,         {.i = -1 } },
-  { KeyPress,     MODKEY|ShiftMask,   XK_period, tagmon,         {.i = +1 } },
-  { KeyRelease,   MODKEY,             XK_Print,  spawn,          {.v = scrot } },
-  TAGKEYS(                            XK_1,                      0)
-    TAGKEYS(                            XK_2,                      1)
-    TAGKEYS(                            XK_3,                      2)
-    TAGKEYS(                            XK_4,                      3)
-    TAGKEYS(                            XK_5,                      4)
-    TAGKEYS(                            XK_6,                      5)
-    TAGKEYS(                            XK_7,                      6)
-    TAGKEYS(                            XK_8,                      7)
-    TAGKEYS(                            XK_9,                      8)
-    { KeyRelease,   MODKEY|ShiftMask,   XK_q,      quit,           {0} },
+  { KeyPress,     MODKEY,             XK_p,            spawn,          {.v = dmenucmd } },
+  { KeyPress,     MODKEY|ShiftMask,   XK_Return,       spawn,          {.v = termcmd } },
+  { KeyPress,     MODKEY,             XK_bracketright, spawn,          {.v = nextkb } },
+  { KeyPress,     MODKEY,             XK_b,            togglebar,      {0} },
+  { KeyPress,     MODKEY,             XK_j,            focusstack,     {.i = +1 } },
+  { KeyPress,     MODKEY,             XK_k,            focusstack,     {.i = -1 } },
+  { KeyPress,     MODKEY,             XK_i,            incnmaster,     {.i = +1 } },
+  { KeyPress,     MODKEY,             XK_d,            incnmaster,     {.i = -1 } },
+  { KeyPress,     MODKEY,             XK_h,            setmfact,       {.f = -0.05} },
+  { KeyPress,     MODKEY,             XK_l,            setmfact,       {.f = +0.05} },
+  { KeyPress,     MODKEY,             XK_Return,       zoom,           {0} },
+  { KeyPress,     MODKEY,             XK_Tab,          view,           {0} },
+  { KeyPress,     MODKEY|ShiftMask,   XK_c,            killclient,     {0} },
+  { KeyPress,     MODKEY,             XK_t,            setlayout,      {.v = &layouts[0]} },
+  { KeyPress,     MODKEY,             XK_f,            setlayout,      {.v = &layouts[1]} },
+  { KeyPress,     MODKEY,             XK_m,            setlayout,      {.v = &layouts[2]} },
+  { KeyPress,     MODKEY,             XK_g,            setlayout,      {.v = &layouts[3]} },
+  { KeyPress,     MODKEY,             XK_s,            setlayout,      {.v = &layouts[4]} },
+  { KeyPress,     MODKEY,             XK_space,        setlayout,      {0} },
+  { KeyPress,     MODKEY|ShiftMask,   XK_space,        togglefloating, {0} },
+  { KeyPress,     MODKEY,             XK_0,            view,           {.ui = ~0 } },
+  { KeyPress,     MODKEY|ShiftMask,   XK_0,            tag,            {.ui = ~0 } },
+  { KeyPress,     MODKEY,             XK_comma,        focusmon,       {.i = -1 } },
+  { KeyPress,     MODKEY,             XK_period,       focusmon,       {.i = +1 } },
+  { KeyPress,     MODKEY|ShiftMask,   XK_comma,        tagmon,         {.i = -1 } },
+  { KeyPress,     MODKEY|ShiftMask,   XK_period,       tagmon,         {.i = +1 } },
+  { KeyRelease,   MODKEY,             XK_Print,        spawn,          {.v = scrot } },
+  TAGKEYS( XK_1, 0)
+  TAGKEYS( XK_2, 1)
+  TAGKEYS( XK_3, 2)
+  TAGKEYS( XK_4, 3)
+  TAGKEYS( XK_5, 4)
+  TAGKEYS( XK_6, 5)
+  TAGKEYS( XK_7, 6)
+  TAGKEYS( XK_8, 7)
+  TAGKEYS( XK_9, 8)
+  { KeyRelease,   MODKEY|ShiftMask,   XK_q,            quit,           {0} },
 };
 static Button buttons[] = {
   { ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
