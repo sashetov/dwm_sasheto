@@ -2,10 +2,10 @@ static const char *fonts[] = {
   "monospace:size=8"
 };
 static const char dmenufont[]       = "monospace:size=10";
-static const char normbordercolor[] = "#00e103";
+static const char normbordercolor[] = "#ff0000";
 static const char normbgcolor[]     = "#000000";
 static const char normfgcolor[]     = "#0f94b1";
-static const char selbordercolor[]  = "#ff0000";
+static const char selbordercolor[]  = "#00e103";
 static const char selbgcolor[]      = "#005577";
 static const char selfgcolor[]      = "#eeeeee";
 static unsigned int baralpha        = 0xd0;
@@ -16,7 +16,8 @@ static const int showbar            = 1;
 static const int topbar             = 1;  
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 static const Rule rules[] = {
-  { "Firefox",  NULL,       NULL,       0,            0,           -1 },
+  // class      instance    title       tags mask     isfloating   monitor
+  { "MPlayer",  NULL,       NULL,       0,            0,           -1 },
 };
 static const float mfact     = 0.67; 
 static const int nmaster     = 1;    
