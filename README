@@ -1,51 +1,19 @@
-dwm - dynamic window manager
-============================
-dwm is an extremely fast, small, and dynamic window manager for X.
+dwm
+===
+see https://dwm.suckless.org/
 
+dwm_sasheto
+===========
+- This is my version of dwm for fedora dists.
+- The code for this version is in the base dir and is patched with various patches from that site.
+- After a successfull build you can see the diff from fedora default rmp appear in: RPMBUILD/SOURCES/dwm_sasheto.patch
+TODO: list patches included
 
-Requirements
-------------
-In order to build dwm you need the Xlib header files.
+build instructions
+==================
+- As the file's name USE_MAKERPM_SCRIPT seems to suggest, you have to run ./makerpm
+- After its run RPMs should appear in RPMBUILD/RPMS/x86_64/, or whichever your arch is. If they don't, something went wrong and you can check logs/* for details.
 
-
-Installation
-------------
-Edit config.mk to match your local setup (dwm is installed into
-the /usr/local namespace by default).
-
-Afterwards enter the following command to build and install dwm (if
-necessary as root):
-
-    make clean install
-
-If you are going to use the default bluegray color scheme it is highly
-recommended to also install the bluegray files shipped in the dextra package.
-
-
-Running dwm
------------
-Add the following line to your .xinitrc to start dwm using startx:
-
-    exec dwm
-
-In order to connect dwm to a specific display, make sure that
-the DISPLAY environment variable is set correctly, e.g.:
-
-    DISPLAY=foo.bar:1 exec dwm
-
-(This will start dwm on display :1 of the host foo.bar.)
-
-In order to display status info in the bar, you can do something
-like this in your .xinitrc:
-
-    while xsetroot -name "`date` `uptime | sed 's/.*,//'`"
-    do
-    	sleep 1
-    done &
-    exec dwm
-
-
-Configuration
--------------
-The configuration of dwm is done by creating a custom config.h
-and (re)compiling the source code.
+install instructions
+====================
+- Run ./rpminstall.sh and enjoy. This may fail with some error about rpm name of depends being different, in which case you can copy the directory trees of the filesystems inside the CPIO file inside the RPM files to / and enjoy from there.
