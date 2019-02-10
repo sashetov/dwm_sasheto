@@ -1,6 +1,6 @@
 Name:           dwm
 Version:        6.1
-Release:        6%{?dist}
+Release:        8%{?dist}
 Summary:        Dynamic window manager for X
 %global         _dwmsourcedir       %{_usrsrc}/dwm-user-%{version}-%{release}
 Group:          User Interface/Desktops
@@ -114,6 +114,12 @@ install -m644 %{SOURCE4} %{buildroot}%{_datadir}/xsessions/dwm-user.desktop
 %{_dwmsourcedir}
 
 %changelog
+* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 6.1-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+* Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 6.1-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
 * Wed Aug 02 2017 Fedora Release Engineering <releng@fedoraproject.org> - 6.1-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
 
@@ -125,6 +131,7 @@ install -m644 %{SOURCE4} %{buildroot}%{_datadir}/xsessions/dwm-user.desktop
 
 * Fri Aug 12 2016 Petr Šabata <contyk@redhat.com> - 6.1-3
 - The user subpackage now properly requires redhat-rpm-config
+
 * Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 6.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
