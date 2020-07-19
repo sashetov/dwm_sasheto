@@ -1,5 +1,5 @@
 Name:           dwm
-Version:        6.1
+Version:        6.2
 Release:        8%{?dist}
 Summary:        Dynamic window manager for X
 %global         _dwmsourcedir       %{_usrsrc}/dwm-user-%{version}-%{release}
@@ -102,7 +102,7 @@ install -m644 %{SOURCE4} %{buildroot}%{_datadir}/xsessions/dwm-user.desktop
 
 %files
 %license LICENSE
-%doc BUGS README TODO
+%doc README
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1*
 %{_datadir}/xsessions/dwm.desktop
