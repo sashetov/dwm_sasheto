@@ -15,7 +15,7 @@ static long
 utf8decodebyte(const char c, size_t *i) {
   for (*i = 0; *i < (UTF_SIZ + 1); ++(*i))
     if (((unsigned char)c & utfmask[*i]) == utfbyte[*i])
-      return (unsigned char)c & ~utfmask[*i];
+      return (unsigned char)c; // temp fix due to xft crash on glyphs
   return 0;
 }
 static size_t utf8validate(long *u, size_t i) {

@@ -6,8 +6,8 @@ static const char normbordercolor[] = "#ff0000";
 static const char normbgcolor[]     = "#000000";
 static const char normfgcolor[]     = "#0f94b1";
 static const char selbordercolor[]  = "#00e103";
-static const char selbgcolor[]      = "#005577";
-static const char selfgcolor[]      = "#eeeeee";
+static const char selbgcolor[]      = "#811313";
+static const char selfgcolor[]      = "#ffffff";
 static unsigned int baralpha        = 0xd0;
 static unsigned int borderalpha     = OPAQUE;
 static const unsigned int borderpx  = 1;  
@@ -39,7 +39,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0";
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "xterm", NULL };
-static const char *scrot[] = { "scrot","-q","100","/data/pics/screenshots/\%s.jpg", NULL };
+static const char *screenshot[] = { "/home/sasheto/bin/utils/screenshot", NULL };
 static const char *nextkb[] = { "/home/sasheto/bin/utils/nextkb", NULL };
 static Key keys[] = {
   { KeyPress,     MODKEY,             XK_p,            spawn,          {.v = dmenucmd } },
@@ -68,7 +68,7 @@ static Key keys[] = {
   { KeyPress,     MODKEY,             XK_period,       focusmon,       {.i = +1 } },
   { KeyPress,     MODKEY|ShiftMask,   XK_comma,        tagmon,         {.i = -1 } },
   { KeyPress,     MODKEY|ShiftMask,   XK_period,       tagmon,         {.i = +1 } },
-  { KeyRelease,   MODKEY,             XK_Print,        spawn,          {.v = scrot } },
+  { KeyRelease,   MODKEY,             XK_Print,        spawn,          {.v = screenshot } },
   TAGKEYS( XK_1, 0)
   TAGKEYS( XK_2, 1)
   TAGKEYS( XK_3, 2)
