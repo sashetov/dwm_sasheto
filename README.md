@@ -17,7 +17,6 @@ It will build all the fedora dwm packages for the current (35) version Fedora ev
 
 
 ## Build/Install on Fedora 35
-====================
 ```bash
 ./makerpm
 ./rpminstall.sh
