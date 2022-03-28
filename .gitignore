@@ -1,3 +1,5 @@
 logs
 RPMBUILD
 *.o
+dwm
+dwm.c.old
