@@ -3,3 +3,4 @@ RPMBUILD
 *.o
 dwm
 dwm.c.old
+*.vim
