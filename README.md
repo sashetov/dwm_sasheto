@@ -1,7 +1,7 @@
 # dwm_sasheto Builder (for Fedora)
 
 - Project that builds dwm RPM packages (current base is 6.3 on F35) for Fedora dists.
-It will build all the fedora dwm packages for the current (35) version Fedora even if the official repos don't have it yet.
+- It will build all the Fedora dwm packages for the current (35) version Fedora even if the official repos don't have it yet.
 
 ## dwm_sasheto.spec
 - Caviats: It will apply my patches (located in patches/ dir):
