@@ -1,17 +1,22 @@
-# dwm_sasheto
+# dwm_sasheto Builder (for Fedora)
+
+- Project that builds dwm RPM packages (current base is 6.3 on F35) for Fedora dists.
+It will build all the fedora dwm packages for the current (35) version Fedora even if the official repos don't have it yet.
 
 ## dwm_sasheto.spec
-- This is my version of building DWM packages (current base is 6.3 on F35) for Fedora dists.
-- The code for this version is in the base dir and is patched with various patches from that site.
-- After a successfull build you can see the diff from fedora default rmp appear in: RPMBUILD/SOURCES/dwm_sasheto.patch
+- Caviats: It will apply my patches (located in patches/ dir):
+```
+  dwm-keypressrelease-6.3.patch
+  dwm-pertag-6.3.patch
+  dwm-gaplessgrid-6.3.patch
+  config.def.h_sasheto.patch
+  dwm-fibonacci-6.3.patch
+```
+- If you don't want these, just edit the .spec file and remove them
+- To install on your system you will need to remove any older package versions of dwm packages.
 
-## Build Instructions
-==================
-- As the file's name USE_MAKERPM_SCRIPT seems to suggest, you have to run ./makerpm
-- After its run RPMs should appear in RPMBUILD/RPMS/x86_64/, or whichever your arch is. 
-- If they don't, something went wrong and you can check logs/* for details.
 
-## Install instructions Fedora 35
+## Build/Install on Fedora 35
 ====================
 ```bash
 ./makerpm
