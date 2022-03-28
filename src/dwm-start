@@ -1,0 +1,109 @@
+#!/bin/sh
+# MIT/X Consortium License
+#
+# 2010-2013 Petr Šabata <contyk@redhat.com>
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+#
+
+name=dwm-start
+version=VERSION
+release=RELEASE
+sources=/usr/src/dwm-user-${version}-${release}
+bindir=~/.dwm
+builddir=~/.dwmbuild
+config=${bindir}/config.h
+modified=${bindir}/modified
+buildver=${bindir}/version
+patches=${bindir}/patches
+patchmod=0
+
+function usage {
+    echo "${name} [-h | -f]" 1>&2
+    echo " -h  Show this help" 1>&2
+    echo " -f  Force dwm rebuild" 1>&2
+}
+
+function run_custom {
+    echo "${name}: Running user dwm..." 1>&2
+    ${bindir}/dwm
+}
+
+function run_system {
+    echo "${name}: Running system dwm..." 1>&2
+    dwm
+}
+
+function rebuild {
+    if [ ! -d ${sources} ]; then
+        echo "${name}: Cannot find sources in ${sources}. Not rebuilding." 1>&2
+    else
+        echo "${name}: Rebuilding dwm... " 1>&2
+        rm -rf ${builddir}
+        cp -R ${sources} ${builddir}
+        [ -f ${config} ] && cp ${config} ${builddir}/config.h
+        cd ${builddir}
+        if [ -d ${patches} ]; then
+            echo "${name}: Applying patches..." 1>&2
+            find ${patches} -type f -name '*.diff' | sort | xargs -n1 patch -p1 -i
+        fi
+        make 2>&1 > ${builddir}/build.log
+        if [ "$?" -ne 0 ]; then
+            echo "${name}: FAILED" 1>&2
+            echo "${name}: See ${builddir}/build.log." 1>&2
+            exit 1
+        else
+            echo "${name}: OK" 1>&2
+        fi
+        mv ${builddir}/dwm ${bindir}
+        cd $HOME
+        rm -rf ${builddir}
+        echo $(stat -c %Y "${bindir}/dwm") > ${modified}
+        echo "${version}-${release}" > ${buildver}
+    fi
+}
+
+if [ "$#" -gt 0 -a "$1" != "-f" ]; then
+    usage
+    exit
+fi
+
+mkdir -p ${bindir}
+if [ -f ${config} -o -d ${patches} ]; then
+    if [ -d ${patches} ]; then
+        patchmod=$(find ${patches} -type f -name '*.diff' -exec stat -c %Y {} \; | sort -r | head -n1)
+        if [ "${patchmod}" = "" ]; then
+            patchmod=0
+        fi
+    fi
+    configmod=$(stat -c %Y ${config})
+    if [ "${configmod}" = "" ]; then
+        configmod=0
+    fi
+    if [ ! -f ${modified} ] || [ "$(cat ${modified})" -lt "${configmod}" ] ||
+       [ "$(cat ${modified})" -lt "${patchmod}" ] || [ ! -f ${buildver} ] ||
+       [ "$(cat ${buildver})" != "${version}-${release}" ] || [ "$1" = '-f' ]; then
+        rebuild
+    fi
+    run_custom
+elif [ -f ${bindir}/dwm ]; then
+    run_custom
+else
+    run_system
+fi

@@ -1,11 +1,11 @@
-export SRC_DIR=`readlink -f .`
-export LOGS_DIR="${SRC_DIR}/logs"
-export RPMBUILD_DIR="${SRC_DIR}/RPMBUILD"
+export BASE_DIR=`readlink -f .`
+export LOGS_DIR="${BASE_DIR}/logs"
+export RPMBUILD_DIR="${BASE_DIR}/RPMBUILD"
 export DIFF_WORKDIR="/tmp/diff"
-export SRPM_NAME='dwm-6.2-2.module_f32+7511+d019be5a.src.rpm'
-export SRC_TARGZ='dwm-6.2'
-export PATCH_NAME='dwm_sasheto'
+export SRPM_NAME='dwm-6.3.module_f35_sasheto.src.rpm'
+export SRC_TARGZ='dwm-6.3'
 export SPEC_NAME='dwm_sasheto'
+export PATCHES_DIR="${BASE_DIR}/patches/"
 export DEBUG=1
 function prep_logs {
   set -x
@@ -22,35 +22,22 @@ function prep_rpmbuild {
 }
 function prep_from_srpm {
   set -x
-  cp "${SRC_DIR}/srpm/${SRPM_NAME}" "${RPMBUILD_DIR}/SRPMS/" \
+  cp "${BASE_DIR}/srpm/${SRPM_NAME}" "${RPMBUILD_DIR}/SRPMS/" \
     && rpmbuild -rp "${RPMBUILD_DIR}/SRPMS/${SRPM_NAME}"
   set +x
 }
-function make_patch {
+function prep_from_src_dir {
   set -x
-  mkdir $DIFF_WORKDIR \
-    && cd $DIFF_WORKDIR \
-    && tar -xzvf "${RPMBUILD_DIR}/SOURCES/$SRC_TARGZ.tar.gz" \
-    && mkdir a/ && mv "$SRC_TARGZ/" a/ \
-    && mkdir b/ && cp -ar a/$SRC_TARGZ/ b/ \
-    && cp -a "$SRC_DIR/config.mk" "b/$SRC_TARGZ/" \
-    && cp -a "$SRC_DIR/config.def.h" "b/$SRC_TARGZ/" \
-    && cp -a "$SRC_DIR/drw.c" "b/$SRC_TARGZ/" \
-    && cp -a "$SRC_DIR/drw.h" "b/$SRC_TARGZ/" \
-    && cp -a "$SRC_DIR/dwm.c" "b/$SRC_TARGZ/" \
-    && diff -uNr "a/${SRC_TARGZ}" \
-      "b/${SRC_TARGZ}" > $DIFF_WORKDIR/$PATCH_NAME.patch
-    # for some reason diff doesn't return a good exit status for a successful
-    # diff, so I'm not requiring the && here as it breaks the build
-    set +x
-    return 0
+  cp ${BASE_DIR}/src/{dwm-start,dwm-user.desktop,dwm-start.1,dwm.desktop,dwm-6.3.tar.gz} "${RPMBUILD_DIR}/SOURCES/" && \
+  cp "${BASE_DIR}/src/dwm.spec" "${RPMBUILD_DIR}/SPECS/${SPEC_NAME}.spec" && \
+  tar -xzvf "${BASE_DIR}/src/${SRC_TARGZ}.tar.gz" -C "${RPMBUILD_DIR}/BUILD/"
+  set +x
 }
 function prep_build_from_spec {
   set -x
-  cp -a "${DIFF_WORKDIR}/${PATCH_NAME}.patch" \
-   "${RPMBUILD_DIR}/SOURCES/${PATCH_NAME}.patch" \
-    && cp -a "${SRC_DIR}/${SPEC_NAME}.spec" \
-      "${RPMBUILD_DIR}/SPECS/${SPEC_NAME}.spec"
+  cp ${BASE_DIR}/src/*.patch "${RPMBUILD_DIR}/SOURCES/" && \
+  cp ${PATCHES_DIR}/*.patch "${RPMBUILD_DIR}/SOURCES/" && \
+  cp "${BASE_DIR}/${SPEC_NAME}.spec" "${RPMBUILD_DIR}/SPECS/${SPEC_NAME}.spec"
   set +x
 }
 function build_new_patched_rpms {

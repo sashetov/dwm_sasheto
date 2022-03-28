@@ -1,12 +1,14 @@
 Name:           dwm
-Version:        6.3
-Release:        8%{?dist}
+Version:        6.2
+Release:        2%{?dist}
 Summary:        Dynamic window manager for X
 %global         _dwmsourcedir       %{_usrsrc}/dwm-user-%{version}-%{release}
 Group:          User Interface/Desktops
 License:        MIT
 URL:            http://dwm.suckless.org/
-Source0:        http://dl.suckless.org/dwm/%{name}-%{version}.tar.gz
+# Source is a git checkout (git://git.suckless.org/dwm)
+# Run "make dist" and rename the dwm-$version.tar.gz to dwm-$cohash.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 # dwm-start script and its manpage
 Source1:        dwm-start
 Source2:        dwm-start.1
@@ -15,12 +17,6 @@ Source3:        dwm.desktop
 Source4:        dwm-user.desktop
 # Fedora notes referring to dwm-user in dwm(1)
 Patch1:         dwm-5.8.2-user-notes.patch
-# PATCHES FOR DWM_SASHETO:
-Patch2:         config.def.h_sasheto.patch
-Patch3:         dwm-keypressrelease-6.3.patch
-Patch4:         dwm-pertag-6.3.patch
-Patch5:         dwm-gaplessgrid-6.3.patch
-Patch6:         dwm-fibonacci-6.3.patch
 BuildRequires:  binutils
 BuildRequires:  coreutils
 BuildRequires:  fontconfig-devel
@@ -56,7 +52,6 @@ Requires:       libXft-devel
 Requires:       libXinerama-devel
 Requires:       make
 Requires:       patch
-Requires:       redhat-rpm-config
 
 %description user
 dwm sources and dwm-start script for individual user configuration. dwm-start
@@ -65,12 +60,9 @@ the fly.
 
 %prep
 %autosetup
-# Nuke the silent build.
-sed -i -e 's|\t@|\t|' Makefile
-# Insert optflags
+# Insert optflags + ldflags
 sed -i -e 's|-Os|%{optflags}|' config.mk
-# No strip for debuginfo, and insert ldflags to enhance the security.
-sed -i -e 's|-s ${LIBS}|%{?__global_ldflags} ${LIBS}|' config.mk
+sed -i -e 's|${LIBS}|%{?__global_ldflags} ${LIBS}|' config.mk
 # X includedir path fix
 sed -i -e 's|X11INC = .*|X11INC = %{_includedir}|' config.mk
 # libdir path fix
@@ -118,29 +110,14 @@ install -m644 %{SOURCE4} %{buildroot}%{_datadir}/xsessions/dwm-user.desktop
 %{_dwmsourcedir}
 
 %changelog
-* Mon Mar 28 2022 sashetov's release <alexander@vassilevski.com> - 6.3
-- Rebuilt my sashetov with dwm 6.3 sources for fedora 35 with custom patches
+* Wed Feb 06 2019 Petr Šabata <contyk@redhat.com> - 6.2-2
+- Build with proper LDFLAGS again
 
-* Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 6.1-8
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+* Wed Feb 06 2019 Petr Šabata <contyk@redhat.com> - 6.2-1
+- Updating to the 6.2 release
 
-* Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 6.1-7
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
-
-* Wed Aug 02 2017 Fedora Release Engineering <releng@fedoraproject.org> - 6.1-6
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
-
-* Wed Jul 26 2017 Fedora Release Engineering <releng@fedoraproject.org> - 6.1-5
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
-
-* Fri Feb 10 2017 Fedora Release Engineering <releng@fedoraproject.org> - 6.1-4
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
-
-* Fri Aug 12 2016 Petr Šabata <contyk@redhat.com> - 6.1-3
-- The user subpackage now properly requires redhat-rpm-config
-
-* Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 6.1-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+* Mon Aug 13 2018 Petr Šabata <contyk@redhat.com> - 6.1-1.20180602gitb69c870
+- Packaging the dwm tip for the dwm:latest module
 
 * Mon Nov 16 2015 Petr Šabata <contyk@redhat.com> - 6.1-1
 - 6.1 bump
