@@ -5,3 +5,4 @@ dwm.c.old
 *.vim
 *.orig
 RPMBUILD
+*.html

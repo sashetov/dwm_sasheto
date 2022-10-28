@@ -21,6 +21,7 @@ Patch3:         dwm-keypressrelease-6.3.patch
 Patch4:         dwm-pertag-6.3.patch
 Patch5:         dwm-gaplessgrid-6.3.patch
 Patch6:         dwm-fibonacci-6.3.patch
+Patch7:         dwm-xdgautostart-6.3.patch
 BuildRequires:  binutils
 BuildRequires:  coreutils
 BuildRequires:  fontconfig-devel
@@ -118,6 +119,9 @@ install -m644 %{SOURCE4} %{buildroot}%{_datadir}/xsessions/dwm-user.desktop
 %{_dwmsourcedir}
 
 %changelog
+# Fri Oct 28 2022 sashetov's release <alexander@vassilevski.com> - 6.3
+- added autostart patch on Fedora 36
+
 * Mon Mar 28 2022 sashetov's release <alexander@vassilevski.com> - 6.3
 - Rebuilt my sashetov with dwm 6.3 sources for fedora 35 with custom patches
 
