@@ -14,7 +14,7 @@
   dwm-xdgautostart-6.3.patch
 ```
 - If you don't want these, just edit the .spec file and remove them
-- To install on your system you will need to remove any older package versions of dwm packages.
+- rpminstall.sh will remove any older package versions of dwm packages (dwm and dwm-user).
 
 
 ## Build/Install on Fedora 36
